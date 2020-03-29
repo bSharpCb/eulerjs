@@ -10,3 +10,4 @@ let sum = 0;
 for(let i=1; fibonacci(i) < 4000000; i++){
     fibonacci(i)%2==0 ? sum+= fibonacci(i) : sum = sum;
 }
+console.log(sum)
