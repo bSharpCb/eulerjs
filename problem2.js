@@ -1,9 +1,13 @@
-function fibonacci(n){
+function fibonacci(n,cache){
 //where n represents the nth term of the fibonacci sequence
+    cache = cache||{};
+    if(cache[n]){
+        return cache[n]
+    }
     if(n<=1){
         return 1
     }
-    return fibonacci(n-1) + fibonacci(n-2)
+    return cache[n] = fibonacci(n-1,cache) + fibonacci(n-2,cache)
 }
 
 let sum = 0;
