@@ -1,13 +1,15 @@
-//reminder about algorithms and math stuff
+/* Problem 26
+ * https://projecteuler.net/problem=26
+ * 
+ * Find the value of d < 1000 for which 1/d contains the longest recurring cycle in its decimal fraction part
+ */
 
-function gcd(n1,n2){
-    if(n1==0){
-        return n2;
-    }
-    return gcd(n2%n1, n1);
-}
+/* Notes:
+ * recurring cycles can be found in prime numbers (1/prime produces a recurring cycle)
+ * instead of checking numbers 1-1000, check primes < 1000
+ */ 
 
-//isPrime function
+//isPrime function, return true/false
 function isPrime(n){
     if(isPrime.cache[n]!=null){
         return isPrime.cache[n];
@@ -30,7 +32,7 @@ isPrime.cache={};
 
 
 // algorithm for decimal expansion of rational numbers
-// only works when number is repeating
+// only works when number is repeating, i.e. dExp(6) will throw infinite loop
 
 function dExp(n){
     let a = 1;
@@ -42,6 +44,7 @@ function dExp(n){
     return b;
 }
 
+// make array to hold primes ranging 7-997
 let primes = [];
 
 for(let z=7; z<1000; z+=2){
@@ -50,9 +53,10 @@ for(let z=7; z<1000; z+=2){
     }
 }
 
-let cycle = 6;
-let max = 7;
+let cycle = 6; // longest repeating reciprocal goes here
+let max = 7; // if 1/d produces a repeating reciprocal longer than current value of cycle, d goes here
 
+// iterating through primes array
 for(p in primes) {
     let j = dExp(primes[p]);
     if(j>cycle){
