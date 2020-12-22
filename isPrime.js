@@ -23,3 +23,18 @@ function isPrime(num) {
 
 //initialize a cache for isPrime, so we can store results 
 isPrime.cache = {};
+
+function primeFactors(n) {
+  let primeFactors = []; // array to hold prime factors as we find them
+  while(n % 2 == 0){
+    primeFactors.push(2);
+    n = n / 2;
+  }
+  for(let i=3; i<=Math.sqrt(n); i+=2){
+    if(n % i == 0){
+      primeFactors.push(i);
+      n = n / i;
+    }
+  }  
+  return primeFactors;
+}
