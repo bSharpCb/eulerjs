@@ -25,6 +25,9 @@ function isPrime(num) {
 isPrime.cache = {};
 
 function primeFactors(n) {
+  if(isPrime(n)){
+    return `Please enter a composite number. ${n} is a prime number so its only factors are 1 and ${n}`;
+  }
   let primeFactors = []; // array to hold prime factors as we find them
   while(n % 2 == 0){
     primeFactors.push(2);
